@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.quickjump;
+package org.vanillacraft.vanillagames.gamemode.quickjump;
 
 import org.bukkit.entity.Player;
 import org.vanillacraft.vanillagames.game.Game;

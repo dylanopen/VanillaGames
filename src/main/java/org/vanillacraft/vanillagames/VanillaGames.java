@@ -6,11 +6,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.dylancode.craftgui.CraftGui;
 import org.vanillacraft.vanillagames.command.game.GameCommandRegistry;
-import org.vanillacraft.vanillagames.command.listener.VanillaGamesListener;
+import org.vanillacraft.vanillagames.listener.VanillaGamesListener;
 import org.vanillacraft.vanillagames.command.party.PartyCommandRegistry;
 import org.vanillacraft.vanillagames.forwarding.ForwardingListener;
-import org.vanillacraft.vanillagames.quickjump.QuickJumpListeners;
-import org.vanillacraft.vanillagames.randomitems.RandomItemsListener;
+import org.vanillacraft.vanillagames.gamemode.quickjump.QuickJumpListeners;
+import org.vanillacraft.vanillagames.gamemode.randomitems.RandomItemsListener;
+import org.vanillacraft.vanillagames.gamemode.teamrun.TeamRunListener;
 
 
 public class VanillaGames extends JavaPlugin {
@@ -25,6 +26,7 @@ public class VanillaGames extends JavaPlugin {
         ForwardingListener.handle();
         QuickJumpListeners.handle();
         RandomItemsListener.handle();
+        TeamRunListener.handle();
         new CraftGui(this);
     }
 

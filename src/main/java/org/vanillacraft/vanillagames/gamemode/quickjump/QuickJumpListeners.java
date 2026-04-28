@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.quickjump;
+package org.vanillacraft.vanillagames.gamemode.quickjump;
 
 import static org.vanillacraft.vanillagames.VanillaGames.handleListener;
 

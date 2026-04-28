@@ -1,22 +1,26 @@
-package org.vanillacraft.vanillagames.randomitems;
+package org.vanillacraft.vanillagames.gamemode.randomitems;
 
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class RandomisedBlockDropMap {
-    public HashMap<Material, Material> itemTransforms = new HashMap<>();
+public class RandomisedEntityKillMap {
+    public HashMap<EntityType, Material> itemTransforms = new HashMap<>();
 
-    public RandomisedBlockDropMap() {
+    public RandomisedEntityKillMap() {
+        EntityType[] allEntities = EntityType.values();
         Material[] allMaterials = Material.values();
-        ArrayList<Material> keyItems = new ArrayList<>();
-        for (Material material : allMaterials) {
-            if (!material.isBlock()) continue;
-            keyItems.add(material);
+
+        ArrayList<EntityType> keyItems = new ArrayList<>();
+        for (EntityType entityType : allEntities) {
+            if (!entityType.isAlive()) continue;
+            keyItems.add(entityType);
         }
         Collections.shuffle(keyItems);
+
         ArrayList<Material> resultItems = new ArrayList<>();
         for (Material material : allMaterials) {
             if (!material.isItem()) continue;

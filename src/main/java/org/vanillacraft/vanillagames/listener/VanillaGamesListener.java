@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.command.listener;
+package org.vanillacraft.vanillagames.listener;
 
 import static org.vanillacraft.vanillagames.VanillaGames.handleListener;
 

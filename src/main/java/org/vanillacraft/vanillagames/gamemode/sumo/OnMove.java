@@ -1,6 +1,5 @@
-package org.vanillacraft.vanillagames.sumo;
+package org.vanillacraft.vanillagames.gamemode.sumo;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

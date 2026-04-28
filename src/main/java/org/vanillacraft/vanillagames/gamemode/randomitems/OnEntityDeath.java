@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.randomitems;
+package org.vanillacraft.vanillagames.gamemode.randomitems;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -11,7 +11,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.vanillacraft.vanillagames.game.Game;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 

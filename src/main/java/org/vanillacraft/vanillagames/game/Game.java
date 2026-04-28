@@ -48,6 +48,15 @@ public interface Game {
         }
     }
 
+    default void stop() {
+        Party party = getParty();
+        party.game = null;
+        for (Player player : party.players){
+            PlayerLobbyReset.reset(player);
+        }
+        onStop();
+    }
+
     default boolean announceAdvancements() { return true; }
     default boolean enableChat() { return true; }
 
@@ -63,4 +72,5 @@ public interface Game {
         if (party.game == null) return false;
         return party.game.name().equals(gamemode);
     }
+
 }

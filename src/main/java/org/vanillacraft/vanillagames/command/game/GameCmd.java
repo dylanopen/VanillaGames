@@ -6,8 +6,6 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.dylancode.craftgui.button.MenuItem;
 import org.dylancode.craftgui.menu.ImmutableMenu;
 import org.dylancode.craftgui.button.MenuButton;
@@ -15,9 +13,9 @@ import org.dylancode.craftgui.playermenu.PlayerMenus;
 import org.vanillacraft.vanillagames.game.Game;
 import org.vanillacraft.vanillagames.party.Party;
 import org.vanillacraft.vanillagames.party.PartyList;
-import org.vanillacraft.vanillagames.randomitems.RandomItemsGame;
-import org.vanillacraft.vanillagames.sumo.SumoGame;
-import org.vanillacraft.vanillagames.teamrun.TeamRunGame;
+import org.vanillacraft.vanillagames.gamemode.randomitems.RandomItemsGame;
+import org.vanillacraft.vanillagames.gamemode.sumo.SumoGame;
+import org.vanillacraft.vanillagames.gamemode.teamrun.TeamRunGame;
 
 public class GameCmd {
     public static int execute(CommandContext<CommandSourceStack> ctx) {
@@ -38,7 +36,7 @@ public class GameCmd {
                 () -> startGamemode(new SumoGame(party), player)));
 
         menu.setButton(2, new MenuButton(MenuItem.stack(
-                Material.ENDER_EYE, Component.text("Teamrun", NamedTextColor.BLUE)),
+                Material.ENDER_EYE, Component.text("Team Run", NamedTextColor.BLUE)),
                 () -> startGamemode(new TeamRunGame(party), player)));
 
         menu.open(player);

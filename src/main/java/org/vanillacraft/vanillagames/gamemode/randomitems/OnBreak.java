@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.randomitems;
+package org.vanillacraft.vanillagames.gamemode.randomitems;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

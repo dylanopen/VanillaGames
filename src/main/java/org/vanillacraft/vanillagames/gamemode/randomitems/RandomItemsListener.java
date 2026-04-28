@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.randomitems;
+package org.vanillacraft.vanillagames.gamemode.randomitems;
 
 import static org.vanillacraft.vanillagames.VanillaGames.handleListener;
 

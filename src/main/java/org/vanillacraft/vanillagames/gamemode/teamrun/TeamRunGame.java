@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.teamrun;
+package org.vanillacraft.vanillagames.gamemode.teamrun;
 
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -34,6 +34,7 @@ public class TeamRunGame implements Game {
             if (teamNumber < teamExtra) lastPlayerInTeam++;
             for (int playerIndex = assignedPlayers; playerIndex < lastPlayerInTeam; playerIndex++) {
                 teams.get(teamNumber).add(players.get(playerIndex));
+                assignedPlayers++;
             }
         }
 
@@ -55,21 +56,22 @@ public class TeamRunGame implements Game {
                 team = currentTeam;
             }
         }
-        Random rand = new Random();
-        double teamX = world.getSpawnLocation().getX() + rand.nextInt(-100, 100);
-        double teamY = world.getSpawnLocation().getY() + rand.nextInt(-100, 100);
-        double teamZ = world.getSpawnLocation().getZ() + rand.nextInt(-100, 100);
-        Location teamSpawn = new Location(world, teamX, teamY,teamZ);
         String playerList = "";
         for (Player teamPlayer : team) {
-            teamPlayer.teleportAsync(teamSpawn);
             if (!(teamPlayer == player)) {
                 playerList += teamPlayer.getName() + ", ";
             }
         }
+
+        Random rand = new Random();
+        double teamX = world.getSpawnLocation().getX() + rand.nextInt(-100, 100);
+        double teamZ = world.getSpawnLocation().getZ() + rand.nextInt(-100, 100);
+        Location teamSpawn = new Location(world, teamX, 200, teamZ);
+        player.teleportAsync(teamSpawn);
+
+        if (playerList.isBlank()) playerList = "nobody :(";
+
         player.sendMessage("You are in a team with " + playerList);
-
-
     }
 
     @Override

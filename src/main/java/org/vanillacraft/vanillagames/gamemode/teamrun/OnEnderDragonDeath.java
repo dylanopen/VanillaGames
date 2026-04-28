@@ -1,6 +1,5 @@
-package org.vanillacraft.vanillagames.teamrun;
+package org.vanillacraft.vanillagames.gamemode.teamrun;
 
-import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,7 +8,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.vanillacraft.vanillagames.game.Game;
 import org.vanillacraft.vanillagames.party.Party;
 import org.vanillacraft.vanillagames.party.PartyList;
-import org.vanillacraft.vanillagames.randomitems.RandomItemsGame;
 
 import java.util.ArrayList;
 

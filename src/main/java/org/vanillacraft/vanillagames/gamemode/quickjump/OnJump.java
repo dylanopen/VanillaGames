@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.quickjump;
+package org.vanillacraft.vanillagames.gamemode.quickjump;
 
 import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import org.bukkit.entity.Player;

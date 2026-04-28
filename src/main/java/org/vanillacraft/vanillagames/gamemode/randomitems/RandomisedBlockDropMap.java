@@ -1,4 +1,4 @@
-package org.vanillacraft.vanillagames.randomitems;
+package org.vanillacraft.vanillagames.gamemode.randomitems;
 
 import org.bukkit.Material;
 
@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class RandomisedCraftMap {
+public class RandomisedBlockDropMap {
     public HashMap<Material, Material> itemTransforms = new HashMap<>();
 
-    public RandomisedCraftMap() {
+    public RandomisedBlockDropMap() {
         Material[] allMaterials = Material.values();
         ArrayList<Material> keyItems = new ArrayList<>();
         for (Material material : allMaterials) {
-            if (!material.isItem()) continue;
+            if (!material.isBlock()) continue;
             keyItems.add(material);
         }
         Collections.shuffle(keyItems);
@@ -23,6 +23,7 @@ public class RandomisedCraftMap {
             resultItems.add(material);
         }
         Collections.shuffle(resultItems);
+
 
         int minLength = Math.min(keyItems.size(), resultItems.size());
         for (int i = 0; i < minLength; i++) {

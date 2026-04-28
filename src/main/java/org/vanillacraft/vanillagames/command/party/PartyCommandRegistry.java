@@ -2,7 +2,7 @@ package org.vanillacraft.vanillagames.command.party;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import io.papermc.paper.command.brigadier.Commands;
-import org.vanillacraft.vanillagames.command.game.GameCliCmd;
+import org.vanillacraft.vanillagames.command.game.GameCmd;
 import org.vanillacraft.vanillagames.command.game.GameStopCmd;
 
 public class PartyCommandRegistry {
@@ -12,8 +12,7 @@ public class PartyCommandRegistry {
                         .then(Commands.argument("name", StringArgumentType.string())
                                 .executes(PartyCreateCmd::execute)))
                 .then(Commands.literal("play")
-                        .then(Commands.argument("gamemode", StringArgumentType.string())
-                                .executes(GameCliCmd::execute)))
+                                .executes(GameCmd::execute))
                 .then(Commands.literal("join")
                         .then(Commands.argument("name", StringArgumentType.string())
                                 .executes(PartyJoinCmd::execute)))

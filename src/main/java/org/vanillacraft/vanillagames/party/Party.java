@@ -23,6 +23,13 @@ public class Party {
         }
     }
 
+    public void removePlayer(Player player) {
+        players.remove(player);
+        if (players.size() <= 0) {
+            PartyList.removeParty(this);
+        }
+    }
+
     public void message(Component msg) {
         for (Player player : players) {
             player.sendMessage(msg);
