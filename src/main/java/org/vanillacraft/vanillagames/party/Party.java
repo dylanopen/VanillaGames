@@ -1,6 +1,7 @@
 package org.vanillacraft.vanillagames.party;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.title.Title;
 import org.bukkit.entity.Player;
 import org.vanillacraft.vanillagames.game.Game;
 
@@ -25,6 +26,12 @@ public class Party {
     public void message(Component msg) {
         for (Player player : players) {
             player.sendMessage(msg);
+        }
+    }
+
+    public void title(Component msg) {
+        for (Player player : players) {
+            player.showTitle(Title.title(msg, Component.empty()));
         }
     }
 

@@ -8,6 +8,7 @@ import org.vanillacraft.vanillagames.party.Party;
 import java.util.Random;
 
 public class RandomItemsGame implements Game {
+    Party party;
     public RandomisedBlockDropMap dropMap;
     public RandomisedCraftMap craftMap;
     public RandomisedEntityKillMap entityKillMap;
@@ -23,6 +24,7 @@ public class RandomItemsGame implements Game {
         random = new Random();
         world = generateWorld();
         init(party);
+        this.party = party;
     }
 
     @Override
@@ -33,5 +35,25 @@ public class RandomItemsGame implements Game {
     @Override
     public void onJoin(Player player) {
         player.teleportAsync(world.getSpawnLocation());
+    }
+
+    @Override
+    public void onLeave(Player player) {
+
+    }
+
+    @Override
+    public void onRejoin(Player player) {
+
+    }
+
+    @Override
+    public void onStop() {
+
+    }
+
+    @Override
+    public Party getParty() {
+        return party;
     }
 }

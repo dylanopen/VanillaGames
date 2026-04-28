@@ -8,6 +8,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.vanillacraft.vanillagames.party.Party;
 import org.vanillacraft.vanillagames.party.PartyList;
+import org.vanillacraft.vanillagames.world.WorldTemplate;
 
 import java.util.Random;
 
@@ -16,19 +17,33 @@ import static org.vanillacraft.vanillagames.forwarding.CommandRunner.runCommand;
 public interface Game {
     String name();
     void onJoin(Player player);
+    void onLeave(Player player);
+    void onRejoin(Player player);
+    void onStop();
+    Party getParty();
 
-    default World generateWorld() {
-        Random rand = new Random();
-        int randNum = rand.nextInt(100_000, 999_999);
-        String worldName = name() + "_world_" + randNum;
+    default World generateWorld(int numberSuffix) {
+        String worldName = name() + "_world_" + numberSuffix;
         WorldCreator creator = new WorldCreator(worldName);
         World world = creator.createWorld();
         return world;
     }
 
+    default World generateWorld() {
+        Random rand = new Random();
+        int randNum = rand.nextInt(100_000, 999_999);
+        return generateWorld(randNum);
+    }
+
+    default World generateWorld(String templateName) {
+        Random rand = new Random();
+        int randNum = rand.nextInt(100_000, 999_999);
+        return WorldTemplate.createCopy(templateName, name() + "_world_" + randNum);
+    }
+
     default void init(Party party) {
         for (Player player : party.players) {
-            runCommand("advancement remove " + player.getName() + " everything");
+            runCommand("advancement revoke " + player.getName() + " everything");
             onJoin(player);
         }
     }
