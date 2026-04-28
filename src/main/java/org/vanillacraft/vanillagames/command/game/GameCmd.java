@@ -16,6 +16,8 @@ import org.vanillacraft.vanillagames.game.Game;
 import org.vanillacraft.vanillagames.party.Party;
 import org.vanillacraft.vanillagames.party.PartyList;
 import org.vanillacraft.vanillagames.randomitems.RandomItemsGame;
+import org.vanillacraft.vanillagames.sumo.SumoGame;
+import org.vanillacraft.vanillagames.teamrun.TeamRunGame;
 
 public class GameCmd {
     public static int execute(CommandContext<CommandSourceStack> ctx) {
@@ -31,17 +33,13 @@ public class GameCmd {
                 Material.TURTLE_SCUTE, Component.text("Random Items", NamedTextColor.LIGHT_PURPLE)),
                 () -> startGamemode(new RandomItemsGame(party), player)));
 
-//        menu.setButton(1, new MenuButton(MenuItem.stack(
-//                Material., Component.text("", NamedTextColor.)),
-//                () -> startGamemode(new (party), player)));
-//
-//        menu.setButton(2, new MenuButton(MenuItem.stack(
-//                Material., Component.text("", NamedTextColor.)),
-//                () -> startGamemode(new (party), player)));
-//
-//        menu.setButton(3, new MenuButton(MenuItem.stack(
-//                Material., Component.text("", NamedTextColor.)),
-//                () -> startGamemode(new (party), player)));
+        menu.setButton(1, new MenuButton(MenuItem.stack(
+                Material.LEATHER_BOOTS, Component.text("Sumo", NamedTextColor.GRAY)),
+                () -> startGamemode(new SumoGame(party), player)));
+
+        menu.setButton(2, new MenuButton(MenuItem.stack(
+                Material.ENDER_EYE, Component.text("Teamrun", NamedTextColor.BLUE)),
+                () -> startGamemode(new TeamRunGame(party), player)));
 
         menu.open(player);
 
