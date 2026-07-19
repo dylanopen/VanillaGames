@@ -1,7 +1,7 @@
 name: VanillaGames
 version: '0.3.0'
 main: org.vanillacraft.vanillagames.VanillaGames
-api-version: '1.21'
+api-version: '26.2'
 prefix: VanillaGames
 authors: [ "dylancode <plugins@dylancode.dev>", "BozBozza <bozbozzaminecraft@gmail.com" ]
 description: A full, custom minigame network, running on a single server
