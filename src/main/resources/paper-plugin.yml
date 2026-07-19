@@ -1,8 +1,19 @@
 name: VanillaGames
-version: '0.3.0'
+version: '0.4.0'
 main: org.vanillacraft.vanillagames.VanillaGames
 api-version: '26.2'
 prefix: VanillaGames
-authors: [ "dylancode <plugins@dylancode.dev>", "BozBozza <bozbozzaminecraft@gmail.com" ]
-description: A full, custom minigame network, running on a single server
+authors: [ "dylancode <plugins@dylancode.dev>" ]
+description: A full, custom minigame network, running on a single server (no proxy required)
 website: https://dylancode.dev/plugins
+
+dependencies:
+  server:
+    Multiverse-Core:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    Multiverse-NetherPortals:
+      load: BEFORE
+      required: true
+      join-classpath: true

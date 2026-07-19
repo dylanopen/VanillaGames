@@ -10,14 +10,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-public class TeamRunGame implements Game {
-    Party party;
-    World world;
+public class TeamRunGame extends Game {
     int numTeams = 2;
     ArrayList<ArrayList<Player>> teams = new ArrayList<>();
 
 
     public TeamRunGame(Party party) {
+        name = "teamrun";
+        hasNether = true;
+        hasEnd = true;
+
         for (int i = 0; i < numTeams; i++){
             teams.add(new ArrayList<>());
         }
@@ -39,13 +41,8 @@ public class TeamRunGame implements Game {
         }
 
         this.party = party;
-        world = generateWorld();
+        generateWorld();
         init(party);
-    }
-
-    @Override
-    public String name() {
-        return "teamrun";
     }
 
     @Override
@@ -64,9 +61,9 @@ public class TeamRunGame implements Game {
         }
 
         Random rand = new Random();
-        double teamX = world.getSpawnLocation().getX() + rand.nextInt(-100, 100);
-        double teamZ = world.getSpawnLocation().getZ() + rand.nextInt(-100, 100);
-        Location teamSpawn = new Location(world, teamX, 200, teamZ);
+        double teamX = overworld.getSpawnLocation().getX() + rand.nextInt(-100, 100);
+        double teamZ = overworld.getSpawnLocation().getZ() + rand.nextInt(-100, 100);
+        Location teamSpawn = new Location(overworld, teamX, 200, teamZ);
         player.teleportAsync(teamSpawn);
 
         if (playerList.isBlank()) playerList = "nobody :(";
@@ -87,10 +84,5 @@ public class TeamRunGame implements Game {
     @Override
     public void onStop() {
 
-    }
-
-    @Override
-    public Party getParty() {
-        return party;
     }
 }

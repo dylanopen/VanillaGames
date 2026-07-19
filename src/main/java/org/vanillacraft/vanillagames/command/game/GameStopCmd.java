@@ -31,7 +31,7 @@ public class GameStopCmd {
             ctx.getSource().getSender().sendMessage("Your party is not in a game");
             return Command.SINGLE_SUCCESS;
         }
-        ctx.getSource().getSender().sendMessage("Stopped game " + oldGame.name());
+        ctx.getSource().getSender().sendMessage("Stopped game " + oldGame.name);
         party.game = null;
 
         return Command.SINGLE_SUCCESS;

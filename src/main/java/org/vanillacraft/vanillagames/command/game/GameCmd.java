@@ -20,10 +20,14 @@ import org.vanillacraft.vanillagames.gamemode.teamrun.TeamRunGame;
 public class GameCmd {
     public static int execute(CommandContext<CommandSourceStack> ctx) {
         if (!(ctx.getSource().getExecutor() instanceof Player player)) {
-            ctx.getSource().getSender().sendMessage("You must be a player to use the GUI game selector");
+            ctx.getSource().getSender().sendMessage("You must be a player to use the GUI game selector.");
             return 1;
         }
         Party party = PartyList.getPartyByPlayer(player);
+        if (party == null) {
+            ctx.getSource().getSender().sendMessage("You must be in a party to start a game.");
+            return 1;
+        }
 
         ImmutableMenu menu = new ImmutableMenu(9, "Choose a gamemode");
 
@@ -44,9 +48,8 @@ public class GameCmd {
         return 1;
     }
 
-    private static void startGamemode(Game gameObject, Player player) {
+    private static void startGamemode(Game game, Player player) {
         PlayerMenus.closeMenu(player);
-        Party party = gameObject.getParty();
-        party.game = gameObject;
+        game.party.game = game;
     }
 }

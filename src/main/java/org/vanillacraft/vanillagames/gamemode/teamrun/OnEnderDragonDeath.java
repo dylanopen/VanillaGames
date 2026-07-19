@@ -15,11 +15,10 @@ public class OnEnderDragonDeath implements Listener {
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
         Player player = event.getEntity().getKiller();
-        TeamRunGame game = Game.fromPlayer(player);
-        Party party = PartyList.getPartyByPlayer(player);
         if (player == null) return;
-        if (!Game.isPlaying(player, "teamrun")) return;
+        if (!(Game.fromPlayer(player) instanceof TeamRunGame game)) return;
         if (event.getEntityType() != EntityType.ENDER_DRAGON) return;
+        Party party = PartyList.getPartyByPlayer(player);
 
         ArrayList<Player> team = null;
         for (ArrayList<Player> currentTeam : game.teams) {
@@ -27,10 +26,10 @@ public class OnEnderDragonDeath implements Listener {
                 team = currentTeam;
             }
         }
-        String playerList = "";
+        StringBuilder playerList = new StringBuilder();
         for (Player teamPlayer : team) {
-            playerList += teamPlayer.getName() + ", ";
+            playerList.append(teamPlayer.getName()).append(", ");
         }
-        party.message(playerList + " have defeated the ender dragon");
+        party.message(playerList.toString().substring(0, playerList.length() - 2) + " have defeated the ender dragon");
     }
 }

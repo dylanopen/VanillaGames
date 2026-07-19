@@ -22,8 +22,6 @@ dependencies {
     implementation("com.github.lapisdevelop:craftgui:v0.0.2")
     compileOnly('org.mvplugins.multiverse.core:multiverse-core:5.7.2')
     compileOnly('org.mvplugins.multiverse.netherportals:multiverse-netherportals:5.0.5')
-
-
 }
 
 tasks {

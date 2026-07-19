@@ -12,12 +12,11 @@ public class OnCraft implements Listener {
     @EventHandler
     public void onCraft(PrepareItemCraftEvent event) {
         Player player = (Player)event.getViewers().getFirst();
-        if (!Game.isPlaying(player, "randomitems")) return;
+        if (!(Game.fromPlayer(player) instanceof RandomItemsGame game)) return;
 
         ItemStack[] inventoryContents = event.getInventory().getContents();
         ItemStack craftResultSlot = inventoryContents[0];
         Material oldMaterial = craftResultSlot.getType();
-        RandomItemsGame game = Game.fromPlayer(player);
         Material newMaterial = game.craftMap.itemTransforms.get(oldMaterial);
         craftResultSlot.setType(newMaterial);
 

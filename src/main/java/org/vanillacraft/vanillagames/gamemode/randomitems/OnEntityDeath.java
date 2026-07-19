@@ -20,9 +20,8 @@ public class OnEntityDeath implements Listener {
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
         Player player = event.getEntity().getKiller();
-        if (player == null) return;
-        if (!Game.isPlaying(player, "randomitems")) return;
-        RandomItemsGame game = Game.fromPlayer(player);
+        if (!(Game.fromPlayer(player) instanceof RandomItemsGame game)) return;
+
         Material newMaterial = game.entityKillMap.itemTransforms.get(event.getEntityType());
         int quantity = game.random.nextInt(1, 4);
         event.getEntity().getWorld().dropItemNaturally(event.getEntity().getLocation(), new ItemStack(newMaterial, quantity));

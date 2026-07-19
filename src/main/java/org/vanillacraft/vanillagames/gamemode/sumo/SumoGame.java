@@ -19,10 +19,8 @@ import java.util.Random;
 
 import static org.vanillacraft.vanillagames.VanillaGames.plugin;
 
-public class SumoGame implements Game {
+public class SumoGame extends Game {
     HashMap<Player, Integer> scores = new HashMap<>();
-    World world;
-    Party party;
     ArrayList<Player> alivePlayers = new ArrayList<>();
     boolean roundActive = true;
     Scoreboard scoreboard;
@@ -31,8 +29,8 @@ public class SumoGame implements Game {
     public int pointsPerRound = 5;
 
     public SumoGame(Party party) {
-        this.party = party;
-        loadWorld();
+        name = "sumo";
+        generateWorld("sumo_a");
         init(party);
         createScoreboard();
         SumoListener.handle();
@@ -53,9 +51,6 @@ public class SumoGame implements Game {
         }
     }
 
-    private void loadWorld() {
-        world = generateWorld("sumo_1");
-    }
 
     void killPlayer(Player player) {
         player.setGameMode(GameMode.SPECTATOR);
@@ -92,15 +87,10 @@ public class SumoGame implements Game {
             for (Player partyPlayer : party.players) {
                 alivePlayers.add(partyPlayer);
                 partyPlayer.setGameMode(GameMode.ADVENTURE);
-                partyPlayer.teleportAsync(world.getSpawnLocation());
+                partyPlayer.teleportAsync(overworld.getSpawnLocation());
                 roundActive = true;
             }
         }, 20*5);
-    }
-
-    @Override
-    public String name() {
-        return "sumo";
     }
 
     @Override
@@ -111,7 +101,7 @@ public class SumoGame implements Game {
         plugin().getLogger().info(player + " joined sumo");
         alivePlayers.add(player);
         scores.put(player, 0);
-        player.teleportAsync(world.getSpawnLocation());
+        player.teleportAsync(overworld.getSpawnLocation());
     }
 
     @Override
@@ -127,10 +117,5 @@ public class SumoGame implements Game {
     @Override
     public void onStop() {
 
-    }
-
-    @Override
-    public Party getParty() {
-        return party;
     }
 }

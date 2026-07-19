@@ -25,7 +25,7 @@ public class Party {
 
     public void removePlayer(Player player) {
         players.remove(player);
-        if (players.size() <= 0) {
+        if (players.isEmpty()) {
             PartyList.removeParty(this);
         }
     }

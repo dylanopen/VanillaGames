@@ -12,9 +12,9 @@ public class OnBreak implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        if (!Game.isPlaying(player, "randomitems")) return;
+        if (!(Game.fromPlayer(player) instanceof RandomItemsGame game)) return;
+
         event.setDropItems(false);
-        RandomItemsGame game = Game.fromPlayer(player);
         Material newDrop = game.dropMap.itemTransforms.get(event.getBlock().getType());
         event.getBlock().getWorld().dropItemNaturally(event.getBlock().getLocation(), new ItemStack(newDrop));
     }
